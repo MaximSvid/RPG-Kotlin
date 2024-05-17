@@ -5,10 +5,13 @@ open class Character(var name: String, var health: Double, var level: Int = 1) {
     var originHP: Double
     var attackFactor: Double = 1.0
 
+
     init {
         this.ap = level * 2.0
         this.originHP = health
     }
+
+
 
     open fun attackCharacter(opponent: Opponent, attack: Int) {
 
