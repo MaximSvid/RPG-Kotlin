@@ -6,13 +6,17 @@ open class Character(var name: String, var health: Double, var level: Int = 1) {
     var attackFactor: Double = 1.0
     var isHospital: Boolean = false
     var isHospitalRound: Int = 0
-    var shieldActove: Boolean = false
+//    var shieldActove: Boolean = false
 
 
     init {
         this.ap = level * 2.0
         this.originHP = health
     }
+
+//    open fun increasePowerByTenPercent () {
+//        ap *= 1.1
+//    }
 
 
 
@@ -43,13 +47,14 @@ open class Character(var name: String, var health: Double, var level: Int = 1) {
         }
     }
 
-    open fun actovateShield(character: Character) {
-        if (!shieldActove) {
-            shieldActove = true
-            println("${character.name} has activated the shield")
-
-        }
-    }
+//    open fun actovateShield(character: Character) {
+//        if (!shieldActove) {
+//            shieldActove = true
+//            println("${character.name} has activated the shield")
+//        } else {
+//            println("The shield has already been activated")
+//        }
+//    }
 
 
 }

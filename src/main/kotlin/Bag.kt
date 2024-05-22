@@ -1,4 +1,4 @@
-class Bag() {
+open class Bag() {
 
     private var isUsedBag: Boolean = false
 
@@ -7,7 +7,7 @@ class Bag() {
 
 
     fun useMedicine(character: Character) {
-        if (isUsedBag == false) {
+        if (!isUsedBag) {
             if (amountOfMedicine > 0) {
                 character.health += character.originHP / 2
                 amountOfMedicine--
@@ -26,15 +26,21 @@ class Bag() {
     }
 
     fun usePower (character: Character) {
-        if (amountOfPower > 0) {
-            character.attackFactor *= 1.1
-            amountOfPower--
-            isUsedBag = true
-            println("${character.name} strength has been increased by 10 percent and is equal to ${character.ap}")
-            println("The amount of power in the sum is equal to $amountOfPower items")
+        if (!isUsedBag) {
+            if (amountOfPower > 0) {
+                character.attackFactor *= 1.1
+                amountOfPower--
+                isUsedBag = true
+                println("${character.name} strength has been increased by 10 percent and is equal to ${character.ap}")
+                println("The amount of power in the bag is equal to $amountOfPower ")
+                println("-------------------------------------------------")
+            } else {
+                println("The Cure bag is empty")
+            }
         } else {
-            println("The Cure bag is empty")
+            println("The bag has already been used this turn")
         }
+
     }
 
 

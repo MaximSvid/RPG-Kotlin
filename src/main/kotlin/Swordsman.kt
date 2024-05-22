@@ -4,9 +4,10 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
 
     fun swordAttack(opponent: Opponent) {
         val attack = 20
+        val modifiedAttck = (attack * attackFactor).toInt()
         println("Current health status is ${opponent.health}")
         println("${this.name} attacked with his sword")
-        super.attackCharacter(opponent, attack)
+        super.attackCharacter(opponent, modifiedAttck)
     }
 
     fun superStrongSwordAttack(opponent: Opponent) {
@@ -42,6 +43,10 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
             println("Strong treatment is $numberStrongTreatments and is no linger available")
         }
 
+    }
+
+    fun selectingAttackTypeSwordsman () {
+        if ()
     }
 
 
