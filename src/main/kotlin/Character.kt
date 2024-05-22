@@ -1,9 +1,12 @@
 open class Character(var name: String, var health: Double, var level: Int = 1) {
 
-    val isDeadCharacter: Boolean = false
+    var isDeadCharacter: Boolean = false
     var ap: Double // Attack Points
     var originHP: Double
     var attackFactor: Double = 1.0
+    var isHospital: Boolean = false
+    var isHospitalRound: Int = 0
+    var shieldActove: Boolean = false
 
 
     init {
@@ -37,6 +40,14 @@ open class Character(var name: String, var health: Double, var level: Int = 1) {
 
         if (character.health <= 0) {
             println("Health cannot be restored because ${character.name} one died")
+        }
+    }
+
+    open fun actovateShield(character: Character) {
+        if (!shieldActove) {
+            shieldActove = true
+            println("${character.name} has activated the shield")
+
         }
     }
 
