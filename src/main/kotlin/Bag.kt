@@ -1,6 +1,6 @@
 open class Bag() {
 
-    private var isUsedBag: Boolean = false
+    var isUsedBag: Boolean = false
 
     var amountOfMedicine: Int = 4
     var amountOfPower: Int = 2
@@ -31,7 +31,7 @@ open class Bag() {
                 character.attackFactor *= 1.1
                 amountOfPower--
                 isUsedBag = true
-                println("${character.name} strength has been increased by 10 percent and is equal to ${character.ap}")
+                println("${character.name} strength has been increased by 10 percent")
                 println("The amount of power in the bag is equal to $amountOfPower ")
                 println("-------------------------------------------------")
             } else {
@@ -41,6 +41,10 @@ open class Bag() {
             println("The bag has already been used this turn")
         }
 
+    }
+
+    fun resetBagUse() {
+        isUsedBag = false
     }
 
 

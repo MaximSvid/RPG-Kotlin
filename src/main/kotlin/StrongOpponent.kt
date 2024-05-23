@@ -23,6 +23,15 @@ class StrongOpponent(name: String, health: Double): Opponent (name, health) {
         super.attackcOpponent(character, attack)
     }
 
+    fun randomStrongOpponentAttack(characterList: MutableList<Character>) {
+        val attack = kotlin.random.Random.nextInt(3)
+        when (attack) {
+            0 -> strongOpponentAttackOnAllWarriors(characterList)
+            1 -> commonBossStrongOpponentAttack(characterList.random())
+            2 -> commonBossOpponentAttack(characterList.random())
+        }
+    }
+
 
 
 

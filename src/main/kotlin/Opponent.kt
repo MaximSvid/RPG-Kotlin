@@ -14,35 +14,35 @@ open class Opponent(var name: String, var health: Double, var level: Int = 1) {
     }
 
 
-    open fun inTheHospital(character: Character) {
-        if (character.isHospital) {
-            println("The character ${character.name} is already in the hospital")
-        } else {
-            character.isHospital = true
-            character.isHospitalRound = 3
-            println("${this.name} attacked ${character.name} and ${character.name} was hospitalized")
-            println("A warrior with a name ${character.name} was hospitalized for ${character.isHospitalRound} rounds")
-        }
+//    open fun inTheHospital(character: Character) {
+//        if (character.isHospital) {
+//            println("The character ${character.name} is already in the hospital")
+//        } else {
+//            character.isHospital = true
+//            character.isHospitalRound = 3
+//            println("${this.name} attacked ${character.name} and ${character.name} was hospitalized")
+//            println("A warrior with a name ${character.name} was hospitalized for ${character.isHospitalRound} rounds")
+//        }
+//
+//    }
 
-    }
-
-    open fun reduceHealthByHospital(character: Character) {
-        if (character.isHospitalRound > 0 && character.isHospital == true) {
-            val healthThreshold =
-                0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
-            if (character.health > healthThreshold) {
-                val healthToReduce = character.health * 0.15 //Funktion reduziert die Gesundheit um 15%
-                character.health -= healthToReduce
-                character.health = roundDouble(character.health)
-                println("${character.name} health reduced by 15%. Current health: ${character.health}")
-                println("------------------------------------------------")
-            } else {
-                println("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital ")
-                println("------------------------------------------------")
-            }
-            character.isHospitalRound--
-        }
-    }
+//    open fun reduceHealthByHospital(character: Character) {
+//        if (character.isHospitalRound > 0 && character.isHospital == true) {
+//            val healthThreshold =
+//                0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
+//            if (character.health > healthThreshold) {
+//                val healthToReduce = character.health * 0.15 //Funktion reduziert die Gesundheit um 15%
+//                character.health -= healthToReduce
+//                character.health = roundDouble(character.health)
+//                println("${character.name} health reduced by 15%. Current health: ${character.health}")
+//                println("------------------------------------------------")
+//            } else {
+//                println("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital ")
+//                println("------------------------------------------------")
+//            }
+//            character.isHospitalRound--
+//        }
+//    }
 
 
     open fun attackOpponent(characterList: MutableList<Character>, attack: Int) {
@@ -86,18 +86,18 @@ open class Opponent(var name: String, var health: Double, var level: Int = 1) {
         println("Support opponent ${summonOpponent.name} is summoned, his health ${summonOpponent.health} in aid the main opponent!")
     }
 
-    open fun healthOpponent (opponent: Opponent, points: Int) {
-        opponent.health += points
-        opponent.health = roundDouble(opponent.health)
-        println("${opponent.name} has been reinstated to $points points")
-        println("${opponent.name} has more health ${opponent.health}")
-        println("------------------------------------------------")
-
-        if (opponent.health <= 0) {
-            println("Health cannot be restored because ${opponent.name} one died")
-            isDeadOpponent = true
-        }
-    }
+//    open fun healthOpponent (opponent: Opponent, points: Int) {
+//        opponent.health += points
+//        opponent.health = roundDouble(opponent.health)
+//        println("${opponent.name} has been reinstated to $points points")
+//        println("${opponent.name} has more health ${opponent.health}")
+//        println("------------------------------------------------")
+//
+//        if (opponent.health <= 0) {
+//            println("Health cannot be restored because ${opponent.name} one died")
+//            isDeadOpponent = true
+//        }
+//    }
 
     open fun attackcOpponent (character: Character, attack: Int) {
         character.health -= attack
@@ -111,6 +111,8 @@ open class Opponent(var name: String, var health: Double, var level: Int = 1) {
             character.isDeadCharacter = true
         }
     }
+
+
 
 
 }

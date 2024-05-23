@@ -5,7 +5,7 @@ class Rider(name: String, health: Double) : Character(name, health) {
     fun riderAttack(opponent: Opponent) {
         val attack = 30
         val modifiedAttck = (attack * attackFactor).toInt()
-        println("Current health status is ${opponent.health}")
+        println("Current health status ${opponent.name} is ${opponent.health}")
         println("${this.name} attacked with a rider on horseback")
         super.attackCharacter(opponent, modifiedAttck)
     }
@@ -13,7 +13,7 @@ class Rider(name: String, health: Double) : Character(name, health) {
     fun superStrongRiderAttack(opponent: Opponent) {
         if (numberStrongAttacks > 0) {
             val attack = 60
-            println("Current health status is ${opponent.health}")
+            println("Current health status ${opponent.name} is ${opponent.health}")
             println("${this.name} attacked with a rider on horseback")
             numberStrongAttacks--
             println("Available number of strong attacks for ${this.name} is $numberStrongAttacks")

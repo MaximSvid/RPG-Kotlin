@@ -6,7 +6,7 @@ class Archer(name: String, health: Double) : Character(name, health) {
     fun archerAttack(opponent: Opponent) {
         val attack = 10
         val modifiedAttck = (attack * attackFactor).toInt()
-        println("Current health status is ${opponent.health}")
+        println("Current health status ${opponent.name} is ${opponent.health}")
         println("${this.name} attacked with his bow")
         super.attackCharacter(opponent, modifiedAttck)
     }
@@ -14,9 +14,10 @@ class Archer(name: String, health: Double) : Character(name, health) {
     fun superStrongArcherAttack(opponent: Opponent) {
         if (numberStrongAttacks > 0) {
             val attack = 25
-            println("Current health status is ${opponent.health}")
+            println("Current health status ${opponent.name} is ${opponent.health}")
             println("${this.name} attacked with his bow")
-
+            numberStrongAttacks--
+            println("Available number of strong attacks for ${this.name} is $numberStrongAttacks")
             super.attackCharacter(opponent, attack)
         } else {
             println("Boosted attacks are no longer available")

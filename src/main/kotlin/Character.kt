@@ -25,7 +25,7 @@ open class Character(var name: String, var health: Double, var level: Int = 1) {
         opponent.health -= attack
         opponent.health = roundDouble(opponent.health)
         println("${this.name} attacked and dealt $attack damage")
-        println("${this.name} has more health ${opponent.health}")
+        println("${opponent.name} has more health ${opponent.health}")
         println("------------------------------------------------")
 
         if (opponent.health <= 0) {
