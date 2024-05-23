@@ -66,7 +66,10 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
             0 -> opponentAttackOnAllWarriors(characterList)
             1 -> commonOpponentAttack(characterList.random())
             2 -> commonStrongOpponentAttack(characterList.random())
-            3 -> reduceHealthByHospital(characterList.random())
+            3 -> {
+                println("Nicht arbeitet")
+                reduceHealthByHospital(characterList.random())
+            }
         }
     }
 

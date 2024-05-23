@@ -17,7 +17,6 @@ fun main() {
             println("---Round number $roundNumber---")
 
             //hero1
-            println("-------------------------------")
             println("Character's turn:")
             start(characterList, opponentList, bag)
 

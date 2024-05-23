@@ -46,10 +46,10 @@ fun selectingAttackTypeSwordsman (characterList: MutableList<Character>, opponen
                 Swordsman attacked...
                 Select the type of attack...
                 [1] - Normal attack
-                [2] - Enhanced attack (quantity limited. Attacks available ${swordsman.numberStrongAttacks})
+                [2] - Enhanced attack
                 You can offer treatment for your friends...
                 [3] - Conventional treatment
-                [4] - Enhanced treatment (quantity limited. Treatments available ${swordsman.numberStrongTreatments})
+                [4] - Enhanced treatment 
                 The bag has already been used in this round ---${bag.isUsedBag}---
                  If ---!!!true!!!--- no more use this round.
                 [5] - Bag
@@ -63,6 +63,7 @@ fun selectingAttackTypeSwordsman (characterList: MutableList<Character>, opponen
             "4" -> swordsman.superSwordHealth(swordsman)
             "5" -> {
                 println("""
+                     If the status is true ${bag.isUsedBag}, press [0]
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
                 """.trimIndent())
@@ -96,10 +97,10 @@ fun selectingAttackTypeRider(characterList: MutableList<Character>, opponentList
                 Rider attacked...
                 Select the type of attack...
                 [1] - Normal attack
-                [2] - Enhanced attack (quantity limited. Attacks available ${rider.numberStrongAttacks})
+                [2] - Enhanced attack
                 You can offer treatment for your friends...
                 [3] - Conventional treatment
-                [4] - Enhanced treatment (quantity limited. Treatments available ${rider.numberStrongTreatments})
+                [4] - Enhanced treatment
                 The bag has already been used in this round ---${bag.isUsedBag}---
                  If ---!!!true!!!--- no more use this round.
                 [5] - Bag
@@ -113,6 +114,7 @@ fun selectingAttackTypeRider(characterList: MutableList<Character>, opponentList
             "4" -> rider.superRiderHealth(rider)
             "5" -> {
                 println("""
+                      If the status is true == ${bag.isUsedBag}, press [0]  
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
                 """.trimIndent())
@@ -144,10 +146,10 @@ fun selectingAttackTypeArcher(characterList: MutableList<Character>, opponentLis
                 Archer attacked...
                 Select the type of attack...
                 [1] - Normal attack
-                [2] - Enhanced attack (quantity limited. Attacks available ${archer.numberStrongAttacks})
+                [2] - Enhanced attack
                 You can offer treatment for your friends...
                 [3] - Conventional treatment
-                [4] - Enhanced treatment (quantity limited. Treatments available ${archer.numberStrongTreatments})
+                [4] - Enhanced treatment
                 The bag has already been used in this round ---${bag.isUsedBag}---
                 If ---!!!true!!!--- no more use this round.
                 [5] - Bag
@@ -161,6 +163,7 @@ fun selectingAttackTypeArcher(characterList: MutableList<Character>, opponentLis
             "4" -> archer.superArcherHealth(archer)
             "5" -> {
                 println("""
+                     If the status is true == ${bag.isUsedBag}, press [0]
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
                 """.trimIndent())
@@ -177,6 +180,31 @@ fun selectingAttackTypeArcher(characterList: MutableList<Character>, opponentLis
             else -> {
                 println("Enter a number between 1 and 4")
                 selectingAttackTypeArcher(characterList, opponentList, bag)
+            }
+        }
+    }
+
+    fun removeDeadHero2 (characterList: MutableList<Character>) {
+        var newListCharacter: MutableList<Character> = mutableListOf()
+        for (character in characterList) {
+            if (character.health <= 0){
+                println("A character ${character.name} lost")
+                newListCharacter.add(character)
+            }
+            for (characterLost in newListCharacter){
+                characterList.remove(characterLost)
+                println("${characterLost.name} dropped out")
+            }
+        }
+    }
+
+    fun removeDeadHero (characterList: MutableList<Character>) {
+        characterList.removeIf { character ->
+            if (character.health <= 0) {
+                println("A character ${character.name} lost")
+                true
+            } else {
+                false
             }
         }
     }
