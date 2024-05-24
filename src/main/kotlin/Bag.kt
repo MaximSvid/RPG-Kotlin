@@ -3,7 +3,7 @@ open class Bag() {
     var isUsedBag: Boolean = false
 
     var amountOfMedicine: Int = 4
-    var amountOfPower: Int = 2
+    var amountOfPower: Int = 1
 
 
     fun useMedicine(character: Character) {
