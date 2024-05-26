@@ -47,7 +47,7 @@ class Archer(name: String, health: Double) : Character(name, health) {
             "4" -> superArcherHealth(this)
             "5" -> {
                 println("""
-                     If the status is true ${bag.isUsedBag}, press [0]
+                     If the status is true  --== ${bag.isUsedBag} ==--, press [0]
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
                 """.trimIndent())

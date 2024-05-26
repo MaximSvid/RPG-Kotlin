@@ -32,47 +32,38 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
         super.attackcOpponent(character, attack)
     }
 
-//    fun inTheHospital(character: Character) {
+//    override fun inTheHospital(character: Character) {
 //        if (character.isHospital) {
 //            println("The character ${character.name} is already in the hospital")
 //        } else {
 //            character.isHospital = true
 //            character.isHospitalRound = 3
-//            println("${this.name} attacked ${character.name} and ${character.name} was hospitalized")
-//            println("A warrior with a name ${character.name} was hospitalized for ${character.isHospitalRound} rounds")
+//            println("${this.name} attacked ${character.name} and ${character.name} was hospitalized ${character.isHospitalRound} rounds")
 //        }
 //    }
 
     override fun reduceHealthByHospital(character: Character) {
-        if (character.isHospital) {
-            println("The character ${character.name} is already in the hospital")
+        character.isHospital = true
+        val healthThreshold =
+            0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
+        if (character.health > healthThreshold) {
+            val healthToReduce = character.health * 0.10 //Funktion reduziert die Gesundheit um 10%
+            character.health -= healthToReduce
+            character.health = roundDouble(character.health)
+            println("${character.name} health reduced by 10%. Current health: ${character.health}")
+            println("------------------------------------------------")
         } else {
-            character.isHospital = true
-            character.isHospitalRound = 3
-            println("${this.name} attacked ${character.name} and ${character.name} was hospitalized")
-            println("A warrior with a name ${character.name} was hospitalized for ${character.isHospitalRound} rounds")
+            println("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital ")
+            character.isHospital = false
+            println("------------------------------------------------")
         }
-        if (character.isHospitalRound > 0 && character.isHospital == true) {
-            val healthThreshold =
-                0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
-            if (character.health > healthThreshold) {
-                val healthToReduce = character.health * 0.10 //Funktion reduziert die Gesundheit um 10%
-                character.health -= healthToReduce
-                character.health = roundDouble(character.health)
-                println("${character.name} health reduced by 10%. Current health: ${character.health}")
-                println("------------------------------------------------")
-            } else {
-                println("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital ")
-                println("------------------------------------------------")
-            }
-            character.isHospitalRound--
-        }
+
     }
 
-    fun superStrongOpponent(): StrongOpponent {
-        val strongOpponent = StrongOpponent("StrongOpponent", 250.0)
-        return strongOpponent
-    }
+//    fun superStrongOpponent(): StrongOpponent {
+//        val strongOpponent = StrongOpponent("StrongOpponent", 250.0)
+//        return strongOpponent
+//    }
 
 //    fun summonStrongOpponent(opponentList: MutableList<Opponent>) {
 //        val commonOpponentStrong = StrongOpponent("StrongEnemy", 180.0)
