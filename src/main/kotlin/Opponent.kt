@@ -57,7 +57,7 @@ open class Opponent(var name: String, var health: Double) {
             for (target in characterList) {
                 target.health -= attack
                 target.health = roundDouble(target.health)
-                println("An opponent ${target.name} has been defeated. Health ${target.name} equals ${target.health} ")
+                println("FUN ATTACK ON ALL WARRIORS. An opponent ${target.name} has been defeated. Health ${target.name} equals ${target.health} ")
 //                if (target.health <= 0) {
 //                    defeatedTargets.add(target)
 //                }

@@ -44,10 +44,10 @@ class Test {
 
             for (character in characterList) {
                 if (character.health > 0.0) {
-                    character.selectingAttackType(commonOpponent,bag)
+                    character.selectingAttackType(opponentList.random(),bag)
                 }
             }
-            removeDeadOpponent(opponentList)
+//            removeDeadOpponent(opponentList)
 
             for (opponent in opponentList) {
                 if (opponent is CommonOpponent && opponent.health > 0.0 && opponentList.isNotEmpty()) {
@@ -56,7 +56,15 @@ class Test {
                     continue
                 }
             }
-            removeDeadHero(characterList)
+
+            for (opponent in opponentList) {
+                if (opponent is StrongOpponent && opponent.health > 0.0 && opponentList.isNotEmpty()) {
+                    opponent.randomStrongOpponentAttack(characterList)
+                } else if (opponent is CommonOpponent && opponent.health <= 0.0) {
+                    continue
+                }
+            }
+//            removeDeadHero(characterList)
 
 //            characterList.removeIf { it.health <=0 }// die ausgeknockten Helden auslöschen
 //            opponentList.removeIf { it.health <= 0 } // die ausgeknockten Opponenten auslöschen
@@ -78,11 +86,7 @@ class Test {
 //                }
 //            }
 
-            for (opponent in opponentList) {
-                if (opponent is StrongOpponent && opponent.health > 0.0 && opponentList.isNotEmpty()) {
-                    opponent.randomStrongOpponentAttack(characterList)
-                }
-            }
+
             removeDeadHero(characterList)
             removeDeadOpponent(opponentList)
 

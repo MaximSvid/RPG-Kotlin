@@ -9,7 +9,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
 
     fun opponentAttackOnAllWarriors(warriorList: MutableList<Character>) {
         val attack = 20
-        println("The enemy attacked...")
+        println("FUN ATTACK ON ALL WARRIORS...The enemy attacked...")
         super.attackOpponent(warriorList, attack)
     }
 
@@ -50,7 +50,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
             val healthToReduce = character.health * 0.10 //Funktion reduziert die Gesundheit um 10%
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
-            println("${character.name} health reduced by 10%. Current health: ${character.health}")
+            println("FUN IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}")
             println("------------------------------------------------")
         } else {
             println("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital ")

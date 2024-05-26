@@ -32,7 +32,6 @@ open class Bag() {
                 amountOfPower--
                 isUsedBag = true
                 println("${character.name} strength has been increased by 10 percent")
-                println("The amount of power in the bag is equal to $amountOfPower ")
                 println("-------------------------------------------------")
             } else {
                 println("The Cure bag is empty")
