@@ -5,59 +5,62 @@ import java.util.Random
 
 class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
 
+    var hospitalRounds: Int = 3
     private var isStrongOpponentSummoned: Boolean = false
 
     private fun opponentAttackOnAllWarriors(warriorList: MutableList<Character>) {
         val attack = 20
-        println("ATTACK ON ALL WARRIORS...The enemy attacked...")
+        println(purpleTextCommonOpponent("ATTACK ON ALL WARRIORS...The enemy attacked..."))
         super.attackOpponent(warriorList, attack)
     }
 
     private fun commonOpponentAttack(character: Character) {
         var attack = 35
-        println("NORMAL ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacked with a normal attack")
+        println(purpleTextCommonOpponent("NORMAL ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacked with a normal attack"))
         super.attackcOpponent(character, attack)
     }
 
     private fun commonStrongOpponentAttack(character: Character) {
         var attack = 50
-        println("STRONG ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacking with an intensified attack")
+        println(purpleTextCommonOpponent("STRONG ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacking with an intensified attack"))
         super.attackcOpponent(character, attack)
     }
 
     private fun commonMegaStrongOpponentAttack(character: Character) {
-        val attack = 80
-        println("SUPER MEGA STRONG ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacking with an intensified attack")
-        super.attackcOpponent(character, attack)
+        val attack = 100
+        if (kotlin.random.Random.nextBoolean()) { // 50-prozentige Chance auf einen Angriff ( true or false) (if true damm if blocke wird erfuhlt)
+            println(purpleTextCommonOpponent("SUPER MEGA STRONG ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacking with an intensified attack"))
+            super.attackcOpponent(character, attack)
+        } else {
+            println(purpleTextCommonOpponent("${this.name} attempted SUPER MEGA STRONG ATTACK but in failed"))
+        }
+
     }
 
 
     override fun reduceHealthByHospital(character: Character) {
-        if (!character.isHospital) {
+        val healthThreshold =
+            0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
+
+
+        if (character.health > healthThreshold) {
             character.isHospital = true
-            val healthThreshold =
-                0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
-            if (character.health > healthThreshold) {
-                val healthToReduce = character.health * 0.10 //Funktion reduziert die Gesundheit um 10%
-                character.health -= healthToReduce
-                character.health = roundDouble(character.health)
-                println("FUN IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}")
-                println("------------------------------------------------")
-            } else {
-                println("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital ")
-                character.isHospital = false
-                println("------------------------------------------------")
-            }
-        } else {
-            println("A character already in the hospital cannot be reapplied")
+            val healthToReduce = character.health * 0.10 //Funktion reduziert die Gesundheit um 10%
+            character.health -= healthToReduce
+            character.health = roundDouble(character.health)
+            println(purpleTextCommonOpponent("FUN IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}"))
+            println("------------------------------------------------")
+        } else if (character.health < healthThreshold && character.isHospital) {
+            println(purpleTextCommonOpponent("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital"))
+            character.isHospital = false
+            println("------------------------------------------------")
         }
-
-
     }
+
 
     fun enemyHealthStatusNew(opponent: CommonOpponent, opponentList: MutableList<Opponent>) {
         if (health <= 0.5 * originHeatlhCommon && !isStrongOpponentSummoned) { //Wenn die Gesundheit des Gegners unter 50% liegt und der Boss noch nicht beschworen wurde, dann beschwöre den Boss
-            println("The enemy's health status is ${opponent.health} and less than 50 percent ")
+            println(purpleTextCommonOpponent("The enemy's health status is ${opponent.health} and less than 50 percent"))
             summonStrongOpponent(opponentList)
         }
     }
@@ -66,7 +69,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
         val commonOpponentStrong = StrongOpponent("StrongEnemy", 220.0)
         opponentList.add(commonOpponentStrong)
         isStrongOpponentSummoned = true
-        println("Support opponent ${commonOpponentStrong.name} is summoned, his health ${commonOpponentStrong.health} in aid the main opponent!")
+        println(purpleTextCommonOpponent("Support opponent ${commonOpponentStrong.name} is summoned, his health ${commonOpponentStrong.health} in aid the main opponent!"))
     }
 
     fun randomCommonOpponentAttack(characterList: MutableList<Character>) {
@@ -77,7 +80,6 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
             2 -> commonStrongOpponentAttack(characterList.random())
             3 -> reduceHealthByHospital(characterList.random())
             4 -> commonMegaStrongOpponentAttack(characterList.random())
-
         }
     }
 

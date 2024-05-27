@@ -16,15 +16,15 @@ open class Character(var name: String, var health: Double, level: Int = 1) {
     open fun attackCharacter(opponent: Opponent, attack: Int) {
         opponent.health -= attack
         opponent.health = roundDouble(opponent.health)
-        println("${this.name} attacked and dealt $attack damage. ${opponent.name} has more health ${opponent.health}")
-        println("------------------------------------------------")
+        println(blueTextSwordsman("${this.name} attacked and dealt $attack damage. ${opponent.name} has more health ${opponent.health}"))
+        println(blueTextSwordsman("------------------------------------------------"))
     }
 
     open fun healthCharacter(character: Character, points: Int) {
         character.health += points
         character.health = roundDouble(character.health)
-        println("${this.name} has been reinstated to $points points. ${this.name} has more health ${character.health}")
-        println("------------------------------------------------")
+        println(blueTextSwordsman("${this.name} has been reinstated to $points points. ${this.name} has more health ${character.health}"))
+        println(blueTextSwordsman("------------------------------------------------"))
     }
 
     open fun selectingAttackType (opponent: Opponent, bag: Bag) {
