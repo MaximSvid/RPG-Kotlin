@@ -1,21 +1,11 @@
-import kotlin.system.exitProcess
-
-
 open class Opponent(var name: String, var health: Double) {
-
-
-    var originHeatlhCommon: Double
-
-
-    init {
-        this.originHeatlhCommon = health
-    }
+    var originHealthCommon: Double = health
 
     open fun reduceHealthByHospital(character: Character) {
 
     }
 
-    open fun attackOpponent(characterList: MutableList<Character>, attack: Int) {
+    open fun allAtOnce(characterList: MutableList<Character>, attack: Int) {
         if (characterList.isNotEmpty()) {
             for (target in characterList) {
                 target.health -= attack
@@ -27,7 +17,7 @@ open class Opponent(var name: String, var health: Double) {
     }
 
 
-    open fun attackcOpponent(character: Character, attack: Int) {
+    open fun commonAttack(character: Character, attack: Int) {
         character.health -= attack
         character.health = roundDouble(character.health)
         println(redTextStrongOpponent("${this.name} attacked and dealt $attack damage.${character.name} has more health ${character.health}"))

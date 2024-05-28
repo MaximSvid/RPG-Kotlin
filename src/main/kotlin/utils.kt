@@ -1,7 +1,7 @@
 import kotlin.math.roundToInt
 
 
-fun roundDouble(health: Double): Double {
+fun roundDouble(health: Double): Double { //diese Funktion reduziert die Anzahl der Nachkommastellen auf zwei Stellen
     val roundedHealthToInt = (health * 100).roundToInt()
     val roundedHealth: Double = roundedHealthToInt / 100.0
     return roundedHealth

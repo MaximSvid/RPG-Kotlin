@@ -32,21 +32,10 @@ class BattleLogic {
                 )
             )
 
-
-            for (character in characterList) { //
-                if (character.isHospital) {
-                    commonOpponent.reduceHealthByHospital(character)
-                    val message = "${character.name} is in Hospital and has ${character.health} health"
-                    when (character) {
-                        is Swordsman -> println(blueTextSwordsman(message))
-                        is Rider -> println(yellowTextRider(message))
-                        is Archer -> println(greenTextArcher(message))
-                        else -> println(statusColor(message))
-                    }
-                }
-            }
-
-            val strongOpponent = opponentList.find { it is StrongOpponent } as? StrongOpponent
+            val strongOpponent = opponentList.find { it is StrongOpponent } //as? StrongOpponent
+            /*
+            find { it is StrongOpponent } ist eine Find-Methode, die nach einem Element in einer Liste sucht, diese Element ist StrongOpponent.
+             */
             if (strongOpponent != null) {
                 println(
                     statusColor(
@@ -60,6 +49,12 @@ class BattleLogic {
                 println(statusColor("A Strong Opponent has yet to emerge"))
             }
             println("-----------------------------------------------")
+
+            for (character in characterList) { //
+                if (character.isHospital) {
+                    commonOpponent.reduceHealthByHospital(character)
+                }
+            }
 
             for (character in characterList) {
                 if (character.health > 0.0) {

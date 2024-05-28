@@ -4,9 +4,9 @@ class Archer(name: String, health: Double) : Character(name, health) {
 
     private fun archerAttack(opponent: Opponent) {
         val attack = 10
-        val modifiedAttck = (attack * attackFactor).toInt()
+        val modifiedAttack = (attack * attackFactor).toInt()
         println(greenTextArcher("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his bow"))
-        super.attackCharacter(opponent, modifiedAttck)
+        super.attackCharacter(opponent, modifiedAttack)
     }
 
     private fun superStrongArcherAttack(opponent: Opponent) {

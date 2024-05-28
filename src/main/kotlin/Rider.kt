@@ -2,9 +2,9 @@ class Rider(name: String, health: Double) : Character(name, health) {
 
     private fun riderAttack(opponent: Opponent) {
         val attack = 30
-        val modifiedAttck = (attack * attackFactor).toInt()
+        val modifiedAttack = (attack * attackFactor).toInt()
         println(yellowTextRider("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with a rider on horseback"))
-        super.attackCharacter(opponent, modifiedAttck)
+        super.attackCharacter(opponent, modifiedAttack)
     }
 
     private fun superStrongRiderAttack(opponent: Opponent) {

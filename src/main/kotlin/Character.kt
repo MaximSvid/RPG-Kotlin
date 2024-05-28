@@ -1,16 +1,8 @@
-open class Character(var name: String, var health: Double, level: Int = 1) {
+open class Character(var name: String, var health: Double) {
 
-    var ap: Double // Attack Points
-    var originHP: Double
-    var attackFactor: Double = 1.0
-    var isHospital: Boolean = false
-
-
-    init {
-        this.ap = level * 2.0
-        this.originHP = health
-    }
-
+    var originHP: Double = health //Der Gesundheitszustand beträgt 100 %. Vorausgesetzt, dieser Wert ist der Höchstwert bei der Initialisierung
+    var attackFactor: Double = 1.0 //eine der Funktionen erhöht diesen Wert um 10%
+    var isHospital: Boolean = false //Eine der Funktionen (reduceHealthByHospital) setzt voraus, dass eine Spielfigur jeweils nur einmal im Krankenhaus sein kann.
 
 
     open fun attackCharacter(opponent: Opponent, attack: Int) {

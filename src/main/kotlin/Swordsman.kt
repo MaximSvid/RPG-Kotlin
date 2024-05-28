@@ -2,9 +2,9 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
 
     private fun swordAttack(opponent: Opponent) {
         val attack = 20
-        val modifiedAttck = (attack * attackFactor).toInt()
+        val modifiedAttack = (attack * attackFactor).toInt()
         println(blueTextSwordsman("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his sword"))
-        super.attackCharacter(opponent, modifiedAttck)
+        super.attackCharacter(opponent, modifiedAttack)
     }
 
     private fun superStrongSwordAttack(opponent: Opponent) {

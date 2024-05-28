@@ -12,9 +12,8 @@ open class Bag() {
                 character.health += character.originHP / 2
                 amountOfMedicine--
                 isUsedBag = true
-                var bagMedicineSize = amountOfMedicine
                 println(pintTextBag("${character.name} health has been increased by half and now equals ${character.health} "))
-                println(pintTextBag("The amount of drug in the sum is equal to $bagMedicineSize items"))
+                println(pintTextBag("The amount of drug in the sum is equal to $amountOfMedicine items"))
                 println(pintTextBag("-----------------------"))
             } else {
                 println(pintTextBag("The Cure bag is empty"))
