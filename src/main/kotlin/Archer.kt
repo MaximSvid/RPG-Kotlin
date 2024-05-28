@@ -5,30 +5,30 @@ class Archer(name: String, health: Double) : Character(name, health) {
     private fun archerAttack(opponent: Opponent) {
         val attack = 10
         val modifiedAttck = (attack * attackFactor).toInt()
-        println(greenTextRider("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his bow"))
+        println(greenTextArcher("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his bow"))
         super.attackCharacter(opponent, modifiedAttck)
     }
 
     private fun superStrongArcherAttack(opponent: Opponent) {
             val attack = 25
-            println(greenTextRider("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his bow"))
+            println(greenTextArcher("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his bow"))
             super.attackCharacter(opponent, attack)
     }
 
     private fun archerHealth(character: Character) {
         val points = 20
-        println(greenTextRider("The state of health ${character.name} is equal to ${character.health}. A USUALLY treatment was utilized."))
+        println(greenTextArcher("The state of health ${character.name} is equal to ${character.health}. A USUALLY treatment was utilized."))
         super.healthCharacter(character, points)
     }
 
     private fun superArcherHealth(character: Character) {
             val points = 35
-            println(greenTextRider("The state of health ${character.name} is equal to ${character.health}. A SUPER treatment was utilized."))
+            println(greenTextArcher("The state of health ${character.name} is equal to ${character.health}. A SUPER treatment was utilized."))
             super.healthCharacter(character, points)
     }
 
     override fun selectingAttackType(opponent: Opponent, bag: Bag) {
-        println(greenTextRider(
+        println(greenTextArcher(
             """ Archer attacked...
                 Select the type of attack...
                 [1] - Normal attack || [2] - Enhanced attack || [3] - Conventional treatment || [4] - Enhanced treatment || [5] - Bag             
@@ -75,7 +75,7 @@ class Archer(name: String, health: Double) : Character(name, health) {
             }
 
             else -> {
-                println(greenTextRider("Enter a number between 1 and 5"))
+                println(greenTextArcher("Enter a number between 1 and 5"))
                 selectingAttackType(opponent, bag)
             }
         }

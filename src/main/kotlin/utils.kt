@@ -22,7 +22,7 @@ fun yellowTextRider(text: String): String {
     return colorTextReset(text, gray)
 }
 
-fun greenTextRider(text: String): String {
+fun greenTextArcher(text: String): String {
     val green = "\u001B[32m"
     return colorTextReset(text, green)
 }

@@ -1,5 +1,3 @@
-import Character
-
 class BattleLogic {
 
     private var warrior1 = Swordsman("Swordsman", 100.0)
@@ -33,6 +31,20 @@ class BattleLogic {
             """.trimIndent()
                 )
             )
+
+
+            for (character in characterList) { //
+                if (character.isHospital) {
+                    commonOpponent.reduceHealthByHospital(character)
+                    val message = "${character.name} is in Hospital and has ${character.health} health"
+                    when (character) {
+                        is Swordsman -> println(blueTextSwordsman(message))
+                        is Rider -> println(yellowTextRider(message))
+                        is Archer -> println(greenTextArcher(message))
+                        else -> println(statusColor(message))
+                    }
+                }
+            }
 
             val strongOpponent = opponentList.find { it is StrongOpponent } as? StrongOpponent
             if (strongOpponent != null) {
@@ -76,11 +88,16 @@ class BattleLogic {
             removeDeadHero(characterList)
             removeDeadOpponent(opponentList)
 
+
+
             bag.resetBagUse()
             roundNumber++
 
 
+
         }
+
+
 
         if (characterList.isEmpty() || characterList.all { it.health <= 0.0 }) {
             println(
@@ -101,7 +118,7 @@ class BattleLogic {
             )
         } else if (opponentList.isEmpty() || opponentList.all { it.health <= 0.0 }) {
             println(
-                greenTextRider(
+                greenTextArcher(
                     """
         ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
         ┃         🎉  Victory Is Yours!  🎉           ┃

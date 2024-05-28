@@ -14,6 +14,7 @@ open class Opponent(var name: String, var health: Double) {
     open fun reduceHealthByHospital(character: Character) {
 
     }
+
     open fun attackOpponent(characterList: MutableList<Character>, attack: Int) {
         if (characterList.isNotEmpty()) {
             for (target in characterList) {
@@ -32,8 +33,6 @@ open class Opponent(var name: String, var health: Double) {
         println(redTextStrongOpponent("${this.name} attacked and dealt $attack damage.${character.name} has more health ${character.health}"))
         println(redTextStrongOpponent("------------------------------------------------"))
     }
-
-
 
 
 }

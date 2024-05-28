@@ -38,24 +38,40 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
     }
 
 
-    override fun reduceHealthByHospital(character: Character) {
+    override fun reduceHealthByHospital(character: Character){
         val healthThreshold =
             0.2 * character.health //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
-
-
         if (character.health > healthThreshold) {
             character.isHospital = true
-            val healthToReduce = character.health * 0.10 //Funktion reduziert die Gesundheit um 10%
+            val healthToReduce = character.originHP * 0.10 //Funktion reduziert die Gesundheit um 10%
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
             println(purpleTextCommonOpponent("FUN IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}"))
-            println("------------------------------------------------")
+            println(purpleTextCommonOpponent("------------------------------------------------"))
         } else if (character.health < healthThreshold && character.isHospital) {
             println(purpleTextCommonOpponent("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital"))
             character.isHospital = false
-            println("------------------------------------------------")
+            println(purpleTextCommonOpponent("------------------------------------------------"))
+        }
+//        return character.isHospital
+    }
+
+    fun newRoundIsHospital(characterList: MutableList<Character>) {
+        for (character in characterList) {
+            if (character.isHospital) {
+                reduceHealthByHospital(character)
+                println("${character.name} is in Hospital and has ${character.health} health")
+            }
         }
     }
+
+//    fun statusIsHospital(characterList: MutableList<Character>) {
+//        for (i in characterList) {
+//            if (reduceHealthByHospital(i)){
+//                println("${i.name} is in Hospital and has ${i.health} health")
+//            }
+//        }
+//    }
 
 
     fun enemyHealthStatusNew(opponent: CommonOpponent, opponentList: MutableList<Opponent>) {
