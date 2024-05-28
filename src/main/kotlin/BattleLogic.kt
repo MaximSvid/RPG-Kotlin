@@ -10,10 +10,21 @@ class BattleLogic {
 
     private var bag = Bag()
 
+    private var musicThread: Thread? = null
+
+
     fun playRound2() {
         var roundNumber: Int = 1
 
+        if (musicThread == null) {
+            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
+            musicThread = Thread(BackgroundMusic(music))
+            musicThread!!.start()
+        }
+
         while (!endGameCheck1()) {
+//            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
+//            playSound(music)
             println(statusColor("---Round number $roundNumber---"))
 //            println("Status List")
 //            println(characterList)
@@ -140,6 +151,7 @@ class BattleLogic {
             return true
         } else return false
     }
+
 }
 
 fun removeDeadOpponent(opponentList: MutableList<Opponent>) {

@@ -43,17 +43,17 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
             character.isHospital = true
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
-            println(statusColor("FUN ${character.name} IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}"))
+            println(purpleTextCommonOpponent("Attack CommonEnemy ${character.name} IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}"))
             println(purpleTextCommonOpponent("------------------------------------------------"))
         } else if (character.health < healthThreshold && character.isHospital) {
             character.isHospital = false
-            println(statusColor("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital"))
+            println(purpleTextCommonOpponent("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital"))
             println(statusColor("------------------------------------------------"))
         } else if (character.isHospital){
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
-            println(statusColor("Patient's ${character.name} still in the hospital and his health equals ${character.health} points"))
-            println(statusColor("------------------------------------------------" +
+            println(purpleTextCommonOpponent("Patient's ${character.name} still in the hospital and his health equals ${character.health} points"))
+            println(purpleTextCommonOpponent("------------------------------------------------" +
                     ""))
         }
     }
