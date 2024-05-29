@@ -16,11 +16,11 @@ class BattleLogic {
     fun playRound2() {
         var roundNumber: Int = 1
 
-        if (musicThread == null) {
-            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
-            musicThread = Thread(BackgroundMusic(music))
-            musicThread!!.start()
-        }
+//        if (musicThread == null) {
+//            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
+//            musicThread = Thread(BackgroundMusic(music))
+//            musicThread!!.start()
+//        }
 
         while (!endGameCheck1()) {
 //            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
