@@ -2,7 +2,7 @@ class StrongOpponent(name: String, health: Double): Opponent (name, health) {
 
     private fun strongOpponentAttackOnAllWarriors (warriorList: MutableList<Character>) {
         val attack = 40
-        println(redTextStrongOpponent("THE BOSS IS ATTACKING. The enemy  attacked..."))
+        println(redTextStrongOpponent("THE BOSS IS ATTACKING..."))
         super.allAtOnce(warriorList, attack)
     }
 

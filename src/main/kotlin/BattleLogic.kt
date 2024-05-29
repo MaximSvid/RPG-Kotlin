@@ -10,10 +10,10 @@ class BattleLogic {
 
     private var bag = Bag()
 
-    private var musicThread: Thread? = null
+//    private var musicThread: Thread? = null
 
 
-    fun playRound2() {
+    fun playRound() {
         var roundNumber: Int = 1
 
 //        if (musicThread == null) {
@@ -22,14 +22,14 @@ class BattleLogic {
 //            musicThread!!.start()
 //        }
 
-        while (!endGameCheck1()) {
+        while (!endGameCheck()) {
 //            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
 //            playSound(music)
             println(statusColor("---Round number $roundNumber---"))
 //            println("Status List")
 //            println(characterList)
 //            println(opponentList)
-            println("-----------------------------------------------")
+            println(statusColor("-----------------------------------------------"))
 
             println(
                 statusColor(
@@ -61,7 +61,7 @@ class BattleLogic {
             }
             println("-----------------------------------------------")
 
-            for (character in characterList) { //
+            for (character in characterList) { // Rufe diese Funktion jede Runde auf, wenn jemand im Krankenhaus liegt, bis die Gesundheit >= 20% ist.
                 if (character.isHospital) {
                     commonOpponent.reduceHealthByHospital(character)
                 }
@@ -143,7 +143,7 @@ class BattleLogic {
 
     }
 
-    private fun endGameCheck1(): Boolean {
+    private fun endGameCheck(): Boolean {
         if (characterList.isEmpty() || opponentList.isEmpty()) {
             return true
         }

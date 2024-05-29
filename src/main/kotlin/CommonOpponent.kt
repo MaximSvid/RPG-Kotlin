@@ -69,7 +69,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
     private fun summonStrongOpponent(opponentList: MutableList<Opponent>) {
         val commonOpponentStrong = StrongOpponent("StrongEnemy", 220.0)
         opponentList.add(commonOpponentStrong)
-        isStrongOpponentSummoned = true
+        isStrongOpponentSummoned = true //Diese Flagge wird benötigt, damit der Boss nur einmal beschworen werden kann.
         println(purpleTextCommonOpponent("Support opponent ${commonOpponentStrong.name} is summoned, his health ${commonOpponentStrong.health} in aid the main opponent!"))
     }
 
