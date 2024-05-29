@@ -18,7 +18,6 @@ open class Character(var name: String, var health: Double) {
     open fun attackCharacter(opponent: Opponent, attack: Int) {
         opponent.health -= attack
         opponent.health = roundDouble(opponent.health)
-//        println(blueTextSwordsman("${this.name} attacked and dealt $attack damage. ${opponent.name} has more health ${opponent.health}"))
         val message =
             "${this.name} attacked and dealt $attack damage. ${opponent.name} has more health ${opponent.health}"
         val coloredMessage = when (this) {
@@ -34,8 +33,6 @@ open class Character(var name: String, var health: Double) {
     open fun healthCharacter(character: Character, points: Int) {
         character.health += points
         character.health = roundDouble(character.health)
-//        println(blueTextSwordsman("${this.name} has been reinstated to $points points. ${this.name} has more health ${character.health}"))
-//        println(blueTextSwordsman("------------------------------------------------"))
         val message =
             "${this.name} has been reinstated to $points points. ${this.name} has more health ${character.health}"
         val coloredMessage = when (this) {
