@@ -42,43 +42,33 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
             "3" -> swordHealth(this)
             "4" -> superSwordHealth(this)
             "5" -> {
-                println(
-                    pintTextBag(
-                        """
-                     If the status is true --== ${bag.isUsedBag} ==--, press [0]
+                if (bag.isUsedBag) {
+                    println(pintTextBag("The bag was used in this round"))
+                    selectingAttackType(opponent, bag)
+                } else {
+                    println(
+                        pintTextBag(
+                            """
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
                 """.trimIndent()
+                        )
                     )
-                )
-                val choiceBag = readln()
-                when (choiceBag) {
-                    "1" -> {
-                        if (bag.isUsedBag){
-                            println(pintTextBag("The bag has already been used in this round. Just pick an attack!!!"))
+                    val choiceBag = readln()
+                    when (choiceBag) {
+                        "1" -> bag.useMedicine(this)
+                        "2" -> bag.usePower(this)
+                        else -> {
+                            println(
+                                pintTextBag("Enter a number between 1 and 5")
+                            )
                             selectingAttackType(opponent, bag)
-                        }else {
-                            bag.useMedicine(this)
                         }
-                    }
-                    "2" -> {
-                        if (bag.isUsedBag){
-                            println(pintTextBag("The bag has already been used in this round. Just pick an attack!!!"))
-                            selectingAttackType(opponent, bag)
-                        } else {
-                            bag.usePower(this)
-                        }
-                    }
-                    else -> {
-                        println (
-                            pintTextBag("Enter a number between 1 and 5"))
-                        selectingAttackType(opponent, bag)
                     }
                 }
             }
-
             else -> {
-                println(blueTextSwordsman("Enter a number between 1 and 5"))
+                println(pintTextBag("Enter a number between 1 and 5"))
                 selectingAttackType(opponent, bag)
             }
         }

@@ -69,10 +69,34 @@ fun playSound(audioPath: String) {
     } else {
         println("Master gain control wird nicht unterstuetzt, wir konnten die Lautstärke so nicht beeinflussen...")
     }
+
 }
 
 
+fun statusWarrior(character: Character) {
+    println(statusColor(if (character.health > 0) "Warrior ${character.name} has ${character.health} health" else "Warrior ${character.name} dropped out"))
+}
 
+fun statusCommonOpponent(commonOpponent: CommonOpponent) {
+    println(statusColor(if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"))
+}
+
+fun statusStrongOpponent(opponentList: MutableList<Opponent>) {
+    val strongOpponent = opponentList.find { it is StrongOpponent }
+    if (strongOpponent != null) {
+        println(
+            statusColor(
+                if (strongOpponent.health > 0)
+                    "Strong Opponent ${strongOpponent.name} has ${strongOpponent.health} health"
+                else
+                    "A Strong Opponent dropped out"
+            )
+        )
+    } else {
+        println(statusColor("A Strong Opponent has yet to emerge"))
+    }
+    println(statusColor("-----------------------------------------------"))
+}
 
 
 

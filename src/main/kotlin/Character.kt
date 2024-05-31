@@ -15,6 +15,7 @@ open class Character(var name: String, var health: Double) {
         }
     }
 
+
     open fun attackCharacter(opponent: Opponent, attack: Int) {
         opponent.health -= attack
         opponent.health = roundDouble(opponent.health)

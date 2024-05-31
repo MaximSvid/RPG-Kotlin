@@ -31,35 +31,41 @@ class BattleLogic {
 //            println(opponentList)
             println(statusColor("-----------------------------------------------"))
 
-            println(
-                statusColor(
-                    """
-                ${if (warrior1.health > 0) "Warrior ${warrior1.name} has ${warrior1.health} health" else "Warrior ${warrior1.name} dropped out"}
-                ${if (warrior2.health > 0) "Warrior ${warrior2.name} has ${warrior2.health} health" else "Warrior ${warrior2.name} dropped out"}
-                ${if (warrior3.health > 0) "Warrior ${warrior3.name} has ${warrior3.health} health" else "Warrior ${warrior3.name} dropped out"}
-               -----------------------------------------------
-               ${if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"}
-            """.trimIndent()
-                )
-            )
+            statusWarrior(warrior1)
+            statusWarrior(warrior2)
+            statusWarrior(warrior3)
+            statusCommonOpponent(commonOpponent)
+            statusStrongOpponent(opponentList)
 
-            val strongOpponent = opponentList.find { it is StrongOpponent } //as? StrongOpponent
-            /*
-            find { it is StrongOpponent } ist eine Find-Methode, die nach einem Element in einer Liste sucht, diese Element ist StrongOpponent.
-             */
-            if (strongOpponent != null) {
-                println(
-                    statusColor(
-                        if (strongOpponent.health > 0)
-                            "Strong Opponent ${strongOpponent.name} has ${strongOpponent.health} health"
-                        else
-                            "A Strong Opponent dropped out"
-                    )
-                )
-            } else {
-                println(statusColor("A Strong Opponent has yet to emerge"))
-            }
-            println("-----------------------------------------------")
+//            println(
+//                statusColor(
+//                    """
+//                ${if (warrior1.health > 0) "Warrior ${warrior1.name} has ${warrior1.health} health" else "Warrior ${warrior1.name} dropped out"}
+//                ${if (warrior2.health > 0) "Warrior ${warrior2.name} has ${warrior2.health} health" else "Warrior ${warrior2.name} dropped out"}
+//                ${if (warrior3.health > 0) "Warrior ${warrior3.name} has ${warrior3.health} health" else "Warrior ${warrior3.name} dropped out"}
+//               -----------------------------------------------
+//               ${if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"}
+//            """.trimIndent()
+//                )
+//            )
+
+//            val strongOpponent = opponentList.find { it is StrongOpponent } //as? StrongOpponent
+//            /*
+//            find { it is StrongOpponent } ist eine Find-Methode, die nach einem Element in einer Liste sucht, diese Element ist StrongOpponent.
+//             */
+//            if (strongOpponent != null) {
+//                println(
+//                    statusColor(
+//                        if (strongOpponent.health > 0)
+//                            "Strong Opponent ${strongOpponent.name} has ${strongOpponent.health} health"
+//                        else
+//                            "A Strong Opponent dropped out"
+//                    )
+//                )
+//            } else {
+//                println(statusColor("A Strong Opponent has yet to emerge"))
+//            }
+//            println(statusColor("-----------------------------------------------"))
 
             for (character in characterList) { // Rufe diese Funktion jede Runde auf, wenn jemand im Krankenhaus liegt, bis die Gesundheit >= 20% ist.
                 if (character.isHospital) {

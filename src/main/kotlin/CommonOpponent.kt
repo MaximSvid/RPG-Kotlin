@@ -35,12 +35,11 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
     }
 
 
-    override fun reduceHealthByHospital(character: Character) {
-        val healthThreshold =
-            0.2 * character.originHP //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt.
-        val healthToReduce = character.originHP * 0.10 //Funktion reduziert die Gesundheit um 10%
+    override fun reduceHealthByHospital(character: Character) {// das Wort override bedeutet, dass die Methode von der übergeordneten Klasse überschrieben wird
+        val healthThreshold: Double = 0.2 * character.originHP //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt. Die Aufgabe dieser Konstante besteht darin, einen Gesundheitswert zu erreichen, der 20 % des ursprünglichen Wertes entspricht.
+        val healthToReduce: Double = character.originHP * 0.10 //Die Aufgabe dieser Konstante besteht darin, einen Gesundheitswert zu erreichen, der 10 % des ursprünglichen Wertes entspricht.
         if (character.health > healthThreshold && !character.isHospital) {
-            character.isHospital = true
+            character.isHospital = true //Die Variable isHospital ist mein Flag, das ich verwende, damit ich diese Funktion nicht zweimal auf denselben Helden anwenden kann.
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
             println(purpleTextCommonOpponent("Attack CommonEnemy ${character.name} IS HOSPITAL!!!${character.name} health reduced by 10%. Current health: ${character.health}"))
@@ -49,7 +48,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
             character.isHospital = false
             println(purpleTextCommonOpponent("${character.name} health is already below 20%.\nThe patient has been discharged from the hospital"))
             println(statusColor("------------------------------------------------"))
-        } else if (character.isHospital){
+        } else if (character.isHospital){ //Ich verwende diese Logik, um die Gesundheit des Helden jede Runde zu reduzieren.
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
             println(purpleTextCommonOpponent("Patient's ${character.name} still in the hospital and his health equals ${character.health} points"))
