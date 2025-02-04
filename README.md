@@ -2,9 +2,6 @@
 <h3 align="center">Abschlussaufgabe RPG</h3>
 <br>
 
-<p align="center">
-  <img src="img/img1.png" width="50%">
-</p>
 
 > **Hinweis**: Lies die Aufgabe aufmerksam. Versuche vor Beginn, die Aufgabe zu strukturieren. Notiere dir skizzenartig/in einem Klassendiagramm, was dein Programm braucht und setze deinen Plan Schritt für Schritt um.
 
@@ -76,50 +73,4 @@ D.h. dass Angriffe mit einer Wahrscheinlichkeit von 5% doppelten Schaden verursa
 * Wenn du magst, kannst du auch sogenannte „Stats“ bei deinen Helden und Gegnern einfügen. Stats könnten z.B. ein Grundschadenswert, Schnelligkeit (= Reihenfolge, in der die Helden und Gegner ihre Aktionen durchführen), Rüstungswert und ähnliches sein. Der Verteidigungswert könnte z.B. einen Angriff auf den betroffenen Charakter um seinen Wert verringern.
 * Noch komplexer wird es, wenn du unterschiedliche Stärken und Schwächen einbinden möchtest. So könnten z.B. deine Helden und Gegner bestimmten Elementartypen angehören. Wasserzauber könnten zum Beispiel gegen Feuertypen grundsätzlich mehr Schaden verursachen – andersherum würde Feuer gegen Wasser nur einen verringerten Schaden verursachen.
 
-## Beispiel-Konsolenausgabe
-```
-######## Runde 5 ########
-Magier hat noch 100 HP
-Krieger hat noch 50 HP
----
-Endgegner hat noch 110 HP
-Unterboss hat noch 20 HP
----
-Magier greift an! Welche Aktion soll er ausführen?
-[1] Feuerball
-[2] Eisattacke
-[3] Donnerschlag
-[4] Heilung
-[5] Beutel nutzen
-1
-Magier greift Endgegner mit Feuerball an und verursacht 20 Schaden!
-Endgegner hat noch 90 HP!
----
-Krieger greift an! Welche Aktion soll er ausführen?
-[1] Schwertsturm
-[2] Schildschlag
-[3] Tackle
-[4] Kampfschrei
-[5] Beutel nutzen
-5
-Im Beutel sind noch 2 Heiltränke und 1 Booster. Was soll genutzt werden?
-[1] Heiltrank
-[2] Booster
-2
-Krieger nutzt Booster! Seine Angriffe sind jetzt alle 10% stärker!
----
-Endgegner greift mit Feueratem an und trifft alle Helden mit 30 HP Schaden!
-Magier hat noch 70 HP
-Krieger hat noch 20 HP
-Unterboss greift Krieger mit Axt an und verursacht 30 Schaden!
-Krieger hat noch -10 HP!
-Krieger ist besiegt und fällt raus!
-######## Runde 6 ########
-Magier hat noch 70 HP
----
-Endgegner hat noch 90 HP
-Unterboss hat noch 20 HP
----
-Magier greift an! Welche Aktion soll er ausführen?
-etc
-```
+
