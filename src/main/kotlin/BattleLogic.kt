@@ -10,25 +10,15 @@ class BattleLogic {
 
     private var bag = Bag()
 
-//    private var musicThread: Thread? = null
-
 
     fun playRound() {
         var roundNumber: Int = 1
 
-//        if (musicThread == null) {
-//            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
-//            musicThread = Thread(BackgroundMusic(music))
-//            musicThread!!.start()
-//        }
-
+        //In Kotlin ist while eine Schleifenstruktur, die einen Codeblock wiederholt ausführt, solange eine bestimmte Bedingung true ist.
         while (!endGameCheck()) {
-//            val music: String = "src/main/kotlin/Audio2/Piano Loops 156 Octave Long.wav"
-//            playSound(music)
+
             println(statusColor("---Round number $roundNumber---"))
-//            println("Status List")
-//            println(characterList)
-//            println(opponentList)
+
             println(statusColor("-----------------------------------------------"))
 
             statusWarrior(warrior1)
@@ -37,35 +27,35 @@ class BattleLogic {
             statusCommonOpponent(commonOpponent)
             statusStrongOpponent(opponentList)
 
-//            println(
-//                statusColor(
-//                    """
-//                ${if (warrior1.health > 0) "Warrior ${warrior1.name} has ${warrior1.health} health" else "Warrior ${warrior1.name} dropped out"}
-//                ${if (warrior2.health > 0) "Warrior ${warrior2.name} has ${warrior2.health} health" else "Warrior ${warrior2.name} dropped out"}
-//                ${if (warrior3.health > 0) "Warrior ${warrior3.name} has ${warrior3.health} health" else "Warrior ${warrior3.name} dropped out"}
-//               -----------------------------------------------
-//               ${if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"}
-//            """.trimIndent()
-//                )
-//            )
+            println(
+                statusColor(
+                    """
+                ${if (warrior1.health > 0) "Warrior ${warrior1.name} has ${warrior1.health} health" else "Warrior ${warrior1.name} dropped out"}
+                ${if (warrior2.health > 0) "Warrior ${warrior2.name} has ${warrior2.health} health" else "Warrior ${warrior2.name} dropped out"}
+                ${if (warrior3.health > 0) "Warrior ${warrior3.name} has ${warrior3.health} health" else "Warrior ${warrior3.name} dropped out"}
+               -----------------------------------------------
+               ${if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"}
+            """.trimIndent()
+                )
+            )
 
-//            val strongOpponent = opponentList.find { it is StrongOpponent } //as? StrongOpponent
-//            /*
-//            find { it is StrongOpponent } ist eine Find-Methode, die nach einem Element in einer Liste sucht, diese Element ist StrongOpponent.
-//             */
-//            if (strongOpponent != null) {
-//                println(
-//                    statusColor(
-//                        if (strongOpponent.health > 0)
-//                            "Strong Opponent ${strongOpponent.name} has ${strongOpponent.health} health"
-//                        else
-//                            "A Strong Opponent dropped out"
-//                    )
-//                )
-//            } else {
-//                println(statusColor("A Strong Opponent has yet to emerge"))
-//            }
-//            println(statusColor("-----------------------------------------------"))
+            val strongOpponent = opponentList.find { it is StrongOpponent } //as? StrongOpponent
+            /*
+            find { it is StrongOpponent } ist eine Find-Methode, die nach einem Element in einer Liste sucht, diese Element ist StrongOpponent.
+             */
+            if (strongOpponent != null) {
+                println(
+                    statusColor(
+                        if (strongOpponent.health > 0)
+                            "Strong Opponent ${strongOpponent.name} has ${strongOpponent.health} health"
+                        else
+                            "A Strong Opponent dropped out"
+                    )
+                )
+            } else {
+                println(statusColor("A Strong Opponent has yet to emerge"))
+            }
+            println(statusColor("-----------------------------------------------"))
 
             for (character in characterList) { // Rufe diese Funktion jede Runde auf, wenn jemand im Krankenhaus liegt, bis die Gesundheit >= 20% ist.
                 if (character.isHospital) {
@@ -100,16 +90,9 @@ class BattleLogic {
             removeDeadHero(characterList)
             removeDeadOpponent(opponentList)
 
-
-
             bag.resetBagUse()
             roundNumber++
-
-
-
         }
-
-
 
         if (characterList.isEmpty() || characterList.all { it.health <= 0.0 }) {
             println(
@@ -169,7 +152,6 @@ fun removeDeadOpponent(opponentList: MutableList<Opponent>) {
         } else {
             false
         }
-
     }
 }
 

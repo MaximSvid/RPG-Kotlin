@@ -26,7 +26,6 @@ class StrongOpponent(name: String, health: Double): Opponent (name, health) {
         } else {
             println(redTextStrongOpponent("${this.name} attempted SUPER MEGA STRONG ATTACK but in failed"))
         }
-
     }
 
     fun randomStrongOpponentAttack(characterList: MutableList<Character>) {
@@ -38,9 +37,4 @@ class StrongOpponent(name: String, health: Double): Opponent (name, health) {
             3 -> commonBossSuperStrongOpponentAttack(characterList.random())
         }
     }
-
-
-
-
-
 }

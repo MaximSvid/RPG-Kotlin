@@ -52,27 +52,6 @@ fun statusColor(text: String): String {
     return colorTextReset(text, white)
 }
 
-fun playSound(audioPath: String) {
-    val audio: File = File(audioPath)
-
-    val audioInput: AudioInputStream = AudioSystem.getAudioInputStream(audio)
-
-    val clip: Clip = AudioSystem.getClip()
-
-    clip.open(audioInput)
-
-    clip.start()
-
-    if (clip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
-        val volume: FloatControl = clip.getControl(FloatControl.Type.MASTER_GAIN) as FloatControl
-        volume.value = volume.minimum + (0.99f * (volume.maximum - volume.minimum))
-    } else {
-        println("Master gain control wird nicht unterstuetzt, wir konnten die Lautstärke so nicht beeinflussen...")
-    }
-
-}
-
-
 fun statusWarrior(character: Character) {
     println(statusColor(if (character.health > 0) "Warrior ${character.name} has ${character.health} health" else "Warrior ${character.name} dropped out"))
 }

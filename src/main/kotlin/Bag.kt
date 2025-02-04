@@ -5,8 +5,8 @@ open class Bag() {
     var amountOfMedicine: Int = 4
     var amountOfPower: Int = 1
 
-
     fun useMedicine(character: Character) {
+        //In Kotlin ist if eine Kontrollstruktur, die verwendet wird, um Bedingungen zu überprüfen und abhängig vom Ergebnis bestimmten Code auszuführen.
         if (!isUsedBag) {
             if (amountOfMedicine > 0) {
                 character.health += character.originHP / 2

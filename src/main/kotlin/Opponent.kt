@@ -9,9 +9,9 @@ open class Opponent(var name: String, var health: Double) {
         }
     }
 
-
     open fun allAtOnce(characterList: MutableList<Character>, attack: Int) {
         if (characterList.isNotEmpty()) {
+            //Die for-Schleife wird verwendet, um eine Sammlung zu durchlaufen.
             for (target in characterList) {
                 target.health -= attack
                 target.health = roundDouble(target.health)
@@ -27,7 +27,6 @@ open class Opponent(var name: String, var health: Double) {
         }
     }
 
-
     open fun commonAttack(character: Character, attack: Int) {
         character.health -= attack
         character.health = roundDouble(character.health)
@@ -40,9 +39,7 @@ open class Opponent(var name: String, var health: Double) {
         println(coloredMessage)
         println(coloredMessageSeparator())
     }
+
     open fun reduceHealthByHospital(character: Character) {
-
     }
-
-
 }

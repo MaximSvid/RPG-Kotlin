@@ -2,7 +2,6 @@
 //import kotlin.random.Random
 
 class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
-
     private var isStrongOpponentSummoned: Boolean = false
 
     private fun opponentAttackOnAllWarriors(warriorList: MutableList<Character>) {
@@ -56,7 +55,6 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
                     ""))
         }
     }
-
 
     fun enemyHealthStatusNew(opponent: CommonOpponent, opponentList: MutableList<Opponent>) {
         if (health <= 0.5 * originHealthCommon && !isStrongOpponentSummoned) { //Wenn die Gesundheit des Gegners unter 50% liegt und der Boss noch nicht beschworen wurde, dann beschwöre den Boss

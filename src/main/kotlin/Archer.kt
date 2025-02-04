@@ -5,6 +5,7 @@ class Archer(name: String, health: Double) : Character(name, health) {
         val attack = 10
         val modifiedAttack = (attack * attackFactor).toInt()
         println(greenTextArcher("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his bow"))
+        //In Kotlin wird das Wort super verwendet, um auf Methoden oder Eigenschaften der Elternklasse (Superklasse) zuzugreifen.
         super.attackCharacter(opponent, modifiedAttack)
     }
 
