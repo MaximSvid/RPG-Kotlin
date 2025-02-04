@@ -4,7 +4,7 @@ import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.Clip
 import javax.sound.sampled.FloatControl
 import kotlin.math.roundToInt
-//
+
 
 fun roundDouble(health: Double): Double { //diese Funktion reduziert die Anzahl der Nachkommastellen auf zwei Stellen
     val roundedHealthToInt = (health * 100).roundToInt()
