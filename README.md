@@ -2,10 +2,6 @@
 <h3 align="center">Abschlussaufgabe RPG</h3>
 <br>
 
-
-> **Hinweis**: Lies die Aufgabe aufmerksam. Versuche vor Beginn, die Aufgabe zu strukturieren. Notiere dir skizzenartig/in einem Klassendiagramm, was dein Programm braucht und setze deinen Plan Schritt für Schritt um.
-
-
 ## 1. Szenario
 
 Du bist neuerdings App-Developer und bekommst deinen ersten Auftrag: Du sollst das neue Videospiel „Golden Syntax“ mitentwickeln. Bei diesem Spiel handelt es sich um ein RPG (Rollenspiel) mit Kämpfen gegen NPCs (computergesteuerte Charaktere). In deinem Developer-Team wird dir die Aufgabe zugeteilt, das **rundenbasierte Kampfsystem** zu entwickeln. Danach sollst du dem Team dein Kampfsystem anhand eines Beispielkampfes gegen den Endgegner vorstellen.
