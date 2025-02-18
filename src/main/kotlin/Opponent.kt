@@ -34,6 +34,7 @@ open class Opponent(var name: String, var health: Double) {
         val coloredMessage = when (this) {
             is CommonOpponent -> purpleTextCommonOpponent(message)
             is StrongOpponent -> redTextStrongOpponent(message)
+            is OpponentSaboteur -> brownTextOpponentSaboteur(message)
             else -> message
         }
         println(coloredMessage)

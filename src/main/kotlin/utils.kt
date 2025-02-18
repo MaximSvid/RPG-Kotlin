@@ -1,8 +1,3 @@
-import java.io.File
-import javax.sound.sampled.AudioInputStream
-import javax.sound.sampled.AudioSystem
-import javax.sound.sampled.Clip
-import javax.sound.sampled.FloatControl
 import kotlin.math.roundToInt
 //
 
@@ -40,6 +35,11 @@ fun redTextStrongOpponent(text: String): String {
 fun purpleTextCommonOpponent(text: String): String {
     val purple = "\u001b[35m"
     return colorTextReset(text, purple)
+}
+
+fun brownTextOpponentSaboteur(text: String): String {
+    val brown = "\u001b[38;5;94m"
+    return colorTextReset(text, brown)
 }
 
 fun pintTextBag(text: String): String {

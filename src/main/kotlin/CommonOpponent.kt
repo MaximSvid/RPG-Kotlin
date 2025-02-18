@@ -58,7 +58,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
 
     fun enemyHealthStatusNew(opponent: CommonOpponent, opponentList: MutableList<Opponent>) {
         if (health <= 0.5 * originHealthCommon && !isStrongOpponentSummoned) { //Wenn die Gesundheit des Gegners unter 50% liegt und der Boss noch nicht beschworen wurde, dann beschwöre den Boss
-            println(purpleTextCommonOpponent("The enemy's health status is ${opponent.health} and less than 50 percent"))
+//            println(purpleTextCommonOpponent("The enemy's health status is ${opponent.health} and less than 50 percent"))
             summonStrongOpponent(opponentList)
         }
     }

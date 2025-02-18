@@ -1,15 +1,16 @@
 class BattleLogic {
 
-    private var warrior1 = Swordsman("Swordsman", 100.0)
-    private var warrior2 = Rider("Rider", 120.0)
-    private var warrior3 = Archer("Archer", 70.0)
-    private var commonOpponent = CommonOpponent("CommonEnemy", 200.0)
+    private var warrior1 = Swordsman("Swordsman", 160.0)
+    private var warrior2 = Rider("Rider", 140.0)
+    private var warrior3 = Archer("Archer", 120.0)
+
+    private var commonOpponent = CommonOpponent("CommonEnemy", 150.0)
+    private var opponentSaboteur = OpponentSaboteur("Saboteur", 30.0)
 
     private var characterList: MutableList<Character> = mutableListOf(warrior1, warrior2, warrior3)
-    private var opponentList: MutableList<Opponent> = mutableListOf(commonOpponent)
+    private var opponentList: MutableList<Opponent> = mutableListOf(commonOpponent, opponentSaboteur)
 
     private var bag = Bag()
-
 
     fun playRound() {
         var roundNumber: Int = 1
@@ -35,6 +36,7 @@ class BattleLogic {
                 ${if (warrior3.health > 0) "Warrior ${warrior3.name} has ${warrior3.health} health" else "Warrior ${warrior3.name} dropped out"}
                -----------------------------------------------
                ${if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"}
+               ${if (opponentSaboteur.health > 0) "Opponent ${opponentSaboteur.name} has ${opponentSaboteur.health} health" else "Opponent ${opponentSaboteur.name} dropped out"}
             """.trimIndent()
                 )
             )
@@ -72,16 +74,18 @@ class BattleLogic {
             for (opponent in opponentList) {
                 if (opponent is CommonOpponent && opponent.health > 0.0 && opponentList.isNotEmpty()) {
                     commonOpponent.randomCommonOpponentAttack(characterList)
+                    opponentSaboteur.randomSaboteurOpponentAttack(characterList)
                 } else if (opponent is CommonOpponent && opponent.health <= 0.0) {
                     continue
                 }
             }
 
             for (opponent in opponentList) {
-                if (opponent is StrongOpponent && opponent.health > 0.0 && opponentList.isNotEmpty()) {
-                    opponent.randomStrongOpponentAttack(characterList)
-                } else if (opponent is CommonOpponent && opponent.health <= 0.0) {
-                    continue
+                if (opponent.health > 0.0) {
+                    when (opponent) {
+                        is CommonOpponent -> opponent.randomCommonOpponentAttack(characterList)
+                        is OpponentSaboteur -> opponent.randomSaboteurOpponentAttack(characterList)
+                    }
                 }
             }
 
