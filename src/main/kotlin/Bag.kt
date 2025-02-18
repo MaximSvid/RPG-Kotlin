@@ -23,7 +23,7 @@ open class Bag() {
             println(pintTextBag("The bag has already been used this turn"))
         }
     }
-
+//
     fun usePower (character: Character) {
         if (!isUsedBag) {
             if (amountOfPower > 0) {
