@@ -52,6 +52,29 @@ fun statusColor(text: String): String {
     return colorTextReset(text, white)
 }
 
+//kleine geschichte das Spiel
+fun showIntroduction() {
+    val introduction = """
+        The Ritter...
+        Vor langer Zeit, in einem Land voller grüner Täler und hoher Berge, 
+        lebten zwei Völker in Frieden und Harmonie. Die Stämme der Elben und 
+        der Menschen teilten das Land und halfen einander in Notzeiten.
+        Doch eines Tages erhob sich König, getrieben von Gier und Macht. 
+        Er führte seine Armee in den Krieg und zerstörte den Frieden...
+
+        Die Ritter stehen nun bereit, das Böse zu bekämpfen!
+        
+        Das Spiel beginnt jetzt!"
+    """.trimIndent()
+
+    for (char in introduction) {
+        print(char)
+        Thread.sleep(10) // Kurze Pause zwischen Wörtern
+    }
+    println()
+
+}
+
 fun statusWarrior(character: Character) {
     println(statusColor(if (character.health > 0) "Warrior ${character.name} has ${character.health} health" else "Warrior ${character.name} dropped out"))
 }

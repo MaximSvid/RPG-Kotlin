@@ -4,6 +4,7 @@ open class Bag() {
 
     var amountOfMedicine: Int = 4
     var amountOfPower: Int = 1
+    var amountOfArrows: Int = Int.MAX_VALUE // 2,147,483,647
 
     fun useMedicine(character: Character) {
         //In Kotlin ist if eine Kontrollstruktur, die verwendet wird, um Bedingungen zu überprüfen und abhängig vom Ergebnis bestimmten Code auszuführen.
@@ -23,8 +24,9 @@ open class Bag() {
             println(pintTextBag("The bag has already been used this turn"))
         }
     }
-//
-    fun usePower (character: Character) {
+
+    //
+    fun usePower(character: Character) {
         if (!isUsedBag) {
             if (amountOfPower > 0) {
                 character.attackFactor *= 1.1
@@ -41,11 +43,20 @@ open class Bag() {
 
     }
 
+    fun restockArrowsForArcher(archer: Archer, amount: Int = 5) {
+        if (!isUsedBag) {
+            archer.arrowCount += amount
+            isUsedBag = true
+            println(pintTextBag("$amount arrows added to ${archer.name}'s quiver. Total arrows: ${archer.arrowCount}"))
+            println(pintTextBag("-------------------------------------------------"))
+        } else {
+            println(pintTextBag("The bag has already been used this turn"))
+        }
+    }
+
     fun resetBagUse() {
         isUsedBag = false
     }
-
-
 
 
 }

@@ -3,7 +3,39 @@ open class Character(var name: String, var health: Double) {
     var originHP: Double = health //Der Gesundheitszustand beträgt 100 %. Vorausgesetzt, dieser Wert ist der Höchstwert bei der Initialisierung
     var attackFactor: Double = 1.0 //eine der Funktionen erhöht diesen Wert um 10%
     var isHospital: Boolean = false  //Eine der Funktionen (reduceHealthByHospital) setzt voraus, dass eine Spielfigur jeweils nur einmal im Krankenhaus sein kann.
+    var isShieldActive: Boolean = false // Flag, das anzeigt, ob der Schild aktiv ist
 
+    // Aktiviert den Schild, falls er noch nicht aktiv ist
+    open fun activateShield() {
+        if (isShieldActive) {
+            println(
+                when (this) {
+                    is Swordsman -> blueTextSwordsman("$name's shield is already active!")
+                    is Archer -> greenTextArcher("$name's shield is already active!")
+                    is Rider -> yellowTextRider("$name's shield is already active!")
+                    else -> "$name's shield is already active!"
+                }
+            )
+        } else {
+            isShieldActive = true
+            println(
+                when (this) {
+                    is Swordsman -> blueTextSwordsman("$name raised their shield! Incoming damage will be reduced by 80%.")
+                    is Archer -> greenTextArcher("$name raised their shield! Incoming damage will be reduced by 80%.")
+                    is Rider -> yellowTextRider("$name raised their shield! Incoming damage will be reduced by 80%.")
+                    else -> "$name raised their shield! Incoming damage will be reduced by 80%!"
+                }
+            )
+        }
+        println(coloredMessageSeparator())
+    }
+
+    // Setzt den Schildstatus zurück (deaktiviert den Schild)
+    fun resetShield () {
+        isShieldActive = false // Deaktiviert den Schild für die nächste Runde
+    }
+
+    // Gibt eine farbige Trennlinie basierend auf dem Charaktertyp zurück
     private fun coloredMessageSeparator(): String {
         return when (this) {
             is Swordsman -> blueTextSwordsman("------------------------------------------------")
@@ -29,8 +61,9 @@ open class Character(var name: String, var health: Double) {
         println(coloredMessageSeparator())
     }
 
+    // Heilt einen Charakter um eine bestimmte Anzahl an Punkten; kann überschrieben werden
     open fun healthCharacter(character: Character, points: Int) {
-        character.health += points
+        character.health += points // Erhöht die Gesundheit des Charakters um die angegebenen Punkte
         character.health = roundDouble(character.health)
         val message =
             "${this.name} has been reinstated to $points points. ${this.name} has more health ${character.health}"
@@ -45,7 +78,9 @@ open class Character(var name: String, var health: Double) {
         println(coloredMessageSeparator())
     }
 
+    // Abstrakte Methode zur Auswahl des Angriffstyps; muss in Unterklassen implementiert werden
     open fun selectingAttackType(opponent: Opponent, bag: Bag) {
+        // Leer gelassen, da diese Methode in den Unterklassen überschrieben wird
     }
 
 }

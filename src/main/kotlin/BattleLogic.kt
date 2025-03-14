@@ -2,7 +2,7 @@ class BattleLogic {
 
     private var warrior1 = Swordsman("Swordsman", 160.0)
     private var warrior2 = Rider("Rider", 140.0)
-    private var warrior3 = Archer("Archer", 120.0)
+    var warrior3 = Archer("Archer", 120.0)
 
     private var commonOpponent = CommonOpponent("CommonEnemy", 150.0)
     private var opponentSaboteur = OpponentSaboteur("Saboteur", 30.0)
@@ -12,29 +12,24 @@ class BattleLogic {
 
     private var bag = Bag()
 
+
     fun playRound() {
         var roundNumber: Int = 1
-
+//        showIntroduction()
         //In Kotlin ist while eine Schleifenstruktur, die einen Codeblock wiederholt ausführt, solange eine bestimmte Bedingung true ist.
         while (!endGameCheck()) {
-
-            println(statusColor("---Round number $roundNumber---"))
-
-            println(statusColor("-----------------------------------------------"))
-
-            statusWarrior(warrior1)
-            statusWarrior(warrior2)
-            statusWarrior(warrior3)
-            statusCommonOpponent(commonOpponent)
-            statusStrongOpponent(opponentList)
+            println()
+            println(statusColor("----------------ROUND NUMBER $roundNumber-----------------"))
+            println()
 
             println(
                 statusColor(
                     """
+                ----------------HEROES TEAM-------------------
                 ${if (warrior1.health > 0) "Warrior ${warrior1.name} has ${warrior1.health} health" else "Warrior ${warrior1.name} dropped out"}
                 ${if (warrior2.health > 0) "Warrior ${warrior2.name} has ${warrior2.health} health" else "Warrior ${warrior2.name} dropped out"}
                 ${if (warrior3.health > 0) "Warrior ${warrior3.name} has ${warrior3.health} health" else "Warrior ${warrior3.name} dropped out"}
-               -----------------------------------------------
+               ----------------OPPONENTS TEAM----------------- 
                ${if (commonOpponent.health > 0) "Opponent ${commonOpponent.name} has ${commonOpponent.health} health" else "Opponent ${commonOpponent.name} dropped out"}
                ${if (opponentSaboteur.health > 0) "Opponent ${opponentSaboteur.name} has ${opponentSaboteur.health} health" else "Opponent ${opponentSaboteur.name} dropped out"}
             """.trimIndent()
@@ -72,9 +67,12 @@ class BattleLogic {
             }
 
             for (opponent in opponentList) {
-                if (opponent is CommonOpponent && opponent.health > 0.0 && opponentList.isNotEmpty()) {
-                    commonOpponent.randomCommonOpponentAttack(characterList)
-                    opponentSaboteur.randomSaboteurOpponentAttack(characterList)
+                if (opponent.health > 0.0 && opponentList.isNotEmpty()) {
+                    when (opponent) {
+                        is CommonOpponent -> opponent.randomCommonOpponentAttack(characterList)
+                        is OpponentSaboteur -> opponent.randomSaboteurOpponentAttack(characterList)
+                        is StrongOpponent -> opponent.randomStrongOpponentAttack(characterList)
+                    }
                 } else if (opponent is CommonOpponent && opponent.health <= 0.0) {
                     continue
                 }
@@ -95,6 +93,7 @@ class BattleLogic {
             removeDeadOpponent(opponentList)
 
             bag.resetBagUse()
+            characterList.forEach { it.resetShield() } // // Setzt den Schild für alle Charaktere zurück
             roundNumber++
         }
 

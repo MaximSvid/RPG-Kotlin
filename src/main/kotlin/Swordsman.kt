@@ -1,5 +1,8 @@
 class Swordsman(name: String, health: Double) : Character(name, health) {
 
+    var countSuperStrongAttackOfSwordsman: Int = 4 // Anzahl der verfügbaren superstarken Angriffe
+
+    // Normaler Angriff mit dem Schwert, verursacht 20 Schaden
     private fun swordAttack(opponent: Opponent) {
         val attack = 20
         val modifiedAttack = (attack * attackFactor).toInt()
@@ -7,40 +10,78 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
         super.attackCharacter(opponent, modifiedAttack)
     }
 
+    // Superstarker Angriff "Bladestorm" mit 50 Schaden, begrenzt auf 4 Anwendungen
     private fun superStrongSwordAttack(opponent: Opponent) {
-        val attack = 50
-        println(blueTextSwordsman("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his sword"))
-        super.attackCharacter(opponent, attack)
+        if (countSuperStrongAttackOfSwordsman > 0) {
+            val attack = 50
+            println(blueTextSwordsman("Current health status ${opponent.name} is ${opponent.health}. ${this.name} attacked with his sword"))
+            super.attackCharacter(opponent, attack)
+            countSuperStrongAttackOfSwordsman--
+        } else {
+            println(blueTextSwordsman(""))
+        }
+
     }
 
+    // Aktiviert den Schild, überschreibt die Methode der Oberklasse
+    override fun activateShield() {
+        super.activateShield()
+    }
+
+//    Heilung, stellt 15 Gesundheitspunkte wieder her
     private fun swordHealth(character: Character) {
         val points = 15
         println(blueTextSwordsman("The state of health ${character.name} is equal to ${character.health}. A USUALLY treatment was utilized."))
         super.healthCharacter(character, points)
     }
 
-    private fun superSwordHealth(character: Character) {
-        val points = 30
-        println(blueTextSwordsman("The state of health ${character.name} is equal to ${character.health}. A SUPER treatment was utilized."))
-        super.healthCharacter(character, points)
-    }
 
+    // Wählt den Angriffstyp aus und zeigt die Optionen in der Konsole an
     override fun selectingAttackType(opponent: Opponent, bag: Bag) {
         println(
             blueTextSwordsman(
-                """ Swordsman attacked...
+                """ SWORDSMAN ATTACKED...
+                Swordsman health status: $health HP
                 Select the type of attack...
-                [1] - Normal attack || [2] - Enhanced attack || [3] - Conventional treatment || [4] - Enhanced treatment || [5] - Bag             
-                The bag has already been used in this round ---${bag.isUsedBag}---
+                [1] - Normal Attack 
+                ${
+                    if (countSuperStrongAttackOfSwordsman <= 0) {
+                        "[2] - Bladestorm (No charges left!)"
+                    } else {
+                        "[2] - Bladestorm (Charges remaining: $countSuperStrongAttackOfSwordsman)"
+                    }
+                }
+                [3] - Activate Shield 
+                [4] - Health 
+                ${if (!bag.isUsedBag) {"[5] - Bag"
+                } else {
+                    "The bag has already been used in this round"
+                }
+                }
             """.trimIndent()
             )
         )
         val choiceAttack = readln()
         when (choiceAttack) {
             "1" -> swordAttack(opponent)
-            "2" -> superStrongSwordAttack(opponent)
-            "3" -> swordHealth(this)
-            "4" -> superSwordHealth(this)
+            "2" -> {
+                if (countSuperStrongAttackOfSwordsman <= 0) {
+                    println(blueTextSwordsman("No Bladestorm charges left! Choose another action."))
+                    selectingAttackType(opponent, bag)
+                } else {
+                    superStrongSwordAttack(opponent)
+                }
+            }
+            "3" -> {
+                if (!isShieldActive) {
+                    println(blueTextSwordsman("$name raised their shield! Incoming damage will be reduced by 80%."))
+                    isShieldActive = true
+                } else {
+                    println(blueTextSwordsman("$name's shield is already active!"))
+                    selectingAttackType(opponent, bag)
+                }
+            }
+            "4" -> swordHealth(this)
             "5" -> {
                 if (bag.isUsedBag) {
                     println(pintTextBag("The bag was used in this round"))
