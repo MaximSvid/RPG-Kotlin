@@ -1,6 +1,6 @@
 class Rider(name: String, health: Double) : Character(name, health) {
 
-    var countSuperStrongAttack: Int = 3 // Anzahl der verfügbaren superstarken Angriffe
+    private var countSuperStrongAttack: Int = 3 // Anzahl der verfügbaren superstarken Angriffe
 
     // Normaler Angriff mit dem Reiter, verursacht 30 Schaden
     private fun riderAttack(opponent: Opponent) {
@@ -13,6 +13,7 @@ class Rider(name: String, health: Double) : Character(name, health) {
     // Aktiviert den Schild, überschreibt die Methode der Oberklasse
     override fun activateShield() {
         super.activateShield()
+        println(yellowTextRider("Rider activated shield..."))
     }
 
     // Superstarker Angriff mit 60 Schaden, begrenzt auf 3 Anwendungen

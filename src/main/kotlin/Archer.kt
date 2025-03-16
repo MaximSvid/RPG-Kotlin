@@ -1,5 +1,5 @@
 class Archer(name: String, health: Double) : Character(name, health) {
-    var arrowCount: Int = 2
+    var arrowCount: Int = 3
 
     // Normaler Angriff, verursacht 10 Schaden (modifiziert durch attackFactor)
     private fun archerAttack(opponent: Opponent) {
@@ -27,6 +27,7 @@ class Archer(name: String, health: Double) : Character(name, health) {
     // Aktiviert den Schild, überschreibt die Methode der Oberklasse
     override fun activateShield() {
         super.activateShield()
+        println(greenTextArcher("Archer activated shield..."))
     }
 
 

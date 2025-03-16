@@ -15,7 +15,7 @@ class BattleLogic {
 
     fun playRound() {
         var roundNumber: Int = 1
-//        showIntroduction()
+        showIntroduction()
         //In Kotlin ist while eine Schleifenstruktur, die einen Codeblock wiederholt ausführt, solange eine bestimmte Bedingung true ist.
         while (!endGameCheck()) {
             println()

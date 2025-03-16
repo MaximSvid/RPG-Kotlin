@@ -1,6 +1,6 @@
 class Swordsman(name: String, health: Double) : Character(name, health) {
 
-    var countSuperStrongAttackOfSwordsman: Int = 4 // Anzahl der verfügbaren superstarken Angriffe
+    private var countSuperStrongAttackOfSwordsman: Int = 4 // Anzahl der verfügbaren superstarken Angriffe
 
     // Normaler Angriff mit dem Schwert, verursacht 20 Schaden
     private fun swordAttack(opponent: Opponent) {
@@ -26,6 +26,7 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
     // Aktiviert den Schild, überschreibt die Methode der Oberklasse
     override fun activateShield() {
         super.activateShield()
+        println(blueTextSwordsman("Swordsman activated shield..."))
     }
 
 //    Heilung, stellt 15 Gesundheitspunkte wieder her

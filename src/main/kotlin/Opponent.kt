@@ -1,4 +1,4 @@
-open class Opponent(var name: String, var health: Double) {
+abstract class Opponent(val name: String, var health: Double) {
     var originHealthCommon: Double = health
 
     // Greift alle Charaktere gleichzeitig an, berücksichtigt aktiven Schild
@@ -37,7 +37,7 @@ open class Opponent(var name: String, var health: Double) {
     open fun commonAttack(character: Character, attack: Int) {
         var finalAttack = attack
         if (character.isShieldActive) {
-            finalAttack = (attack * 2).toInt() // Reduziert den Schaden um 80%, lässt 20% übrig
+            finalAttack = (attack * 0.2).toInt() // Reduziert den Schaden um 80%, lässt 20% übrig
             println(
                 when (this) {
                     is CommonOpponent -> purpleTextCommonOpponent("${character.name}'s Schild hat den Schaden um 80% reduziert!")
