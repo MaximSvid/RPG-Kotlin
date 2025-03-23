@@ -2,7 +2,7 @@ class BattleLogic {
 
     private var warrior1 = Swordsman("Swordsman", 160.0)
     private var warrior2 = Rider("Rider", 140.0)
-    var warrior3 = Archer("Archer", 120.0)
+    private var warrior3 = Archer("Archer", 120.0)
 
     private var commonOpponent = CommonOpponent("CommonEnemy", 150.0)
     private var opponentSaboteur = OpponentSaboteur("Saboteur", 30.0)
@@ -37,6 +37,8 @@ class BattleLogic {
             )
 
             val strongOpponent = opponentList.find { it is StrongOpponent } //as? StrongOpponent
+
+
             /*
             find { it is StrongOpponent } ist eine Find-Methode, die nach einem Element in einer Liste sucht, diese Element ist StrongOpponent.
              */
@@ -95,6 +97,7 @@ class BattleLogic {
             bag.resetBagUse()
             characterList.forEach { it.resetShield() } // // Setzt den Schild für alle Charaktere zurück
             roundNumber++
+
         }
 
         if (characterList.isEmpty() || characterList.all { it.health <= 0.0 }) {

@@ -1,6 +1,6 @@
 class Swordsman(name: String, health: Double) : Character(name, health) {
 
-    private var countSuperStrongAttackOfSwordsman: Int = 4 // Anzahl der verfügbaren superstarken Angriffe
+     var countSuperStrongAttackOfSwordsman: Int = 2 // Anzahl der verfügbaren superstarken Angriffe
 
     // Normaler Angriff mit dem Schwert, verursacht 20 Schaden
     private fun swordAttack(opponent: Opponent) {
@@ -20,7 +20,6 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
         } else {
             println(blueTextSwordsman(""))
         }
-
     }
 
     // Aktiviert den Schild, überschreibt die Methode der Oberklasse
@@ -44,7 +43,7 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
                 """ SWORDSMAN ATTACKED...
                 Swordsman health status: $health HP
                 Select the type of attack...
-                [1] - Normal Attack 
+                [1] - Swordsman Attack 
                 ${
                     if (countSuperStrongAttackOfSwordsman <= 0) {
                         "[2] - Bladestorm (No charges left!)"
@@ -93,6 +92,7 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
                             """
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
+                     [3] - Restock swordsman's Bladestorm
                 """.trimIndent()
                         )
                     )
@@ -100,6 +100,7 @@ class Swordsman(name: String, health: Double) : Character(name, health) {
                     when (choiceBag) {
                         "1" -> bag.useMedicine(this)
                         "2" -> bag.usePower(this)
+                        "3" -> bag.restockSwordsmanBladestorm(this)
                         else -> {
                             println(
                                 pintTextBag("Enter a number between 1 and 5")

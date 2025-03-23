@@ -26,7 +26,6 @@ class StrongOpponent(name: String, health: Double): Opponent (name, health) {
         val attack = 180
         if (kotlin.random.Random.nextBoolean()) { // die 50 Prozent Erfolgschance (gibt zurück true oder false)
             println(redTextStrongOpponent("THE BOSS IS ATTACKING. SUPER STRONG ATTACK. Current health status ${character.name} is ${character.health}. ${this.name} attacked with a normal attack"))
-//            делай
             super.commonAttack(character, attack)
         } else {
             println(redTextStrongOpponent("${this.name} attempted SUPER MEGA STRONG ATTACK but in failed"))

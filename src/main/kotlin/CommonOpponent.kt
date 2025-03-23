@@ -4,11 +4,11 @@
 class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
 
     // Reduziert die Gesundheit eines Charakters um 10% und simuliert einen Krankenhausaufenthalt
-    override fun reduceHealthByHospital(character: Character) {// das Wort override bedeutet, dass die Methode von der übergeordneten Klasse überschrieben wird
+    override fun reduceHealthByHospital(character: Character) {
         val healthThreshold: Double =
             0.2 * character.originHP //Die Funktion ist unwirksam, wenn der Gesundheitszustand weniger als 20% beträgt. Die Aufgabe dieser Konstante besteht darin, einen Gesundheitswert zu erreichen, der 20 % des ursprünglichen Wertes entspricht.
         val healthToReduce: Double =
-            character.originHP * 0.10 //Die Aufgabe dieser Konstante besteht darin, einen Gesundheitswert zu erreichen, der 10 % des ursprünglichen Wertes entspricht.
+            character.originHP * 0.10
         if (character.health > healthThreshold && !character.isHospital) {
             character.isHospital =
                 true //Die Variable isHospital ist mein Flag, das ich verwende, damit ich diese Funktion nicht zweimal auf denselben Helden anwenden kann.
@@ -24,12 +24,7 @@ class CommonOpponent(name: String, health: Double) : Opponent(name, health) {
             character.health -= healthToReduce
             character.health = roundDouble(character.health)
             println(purpleTextCommonOpponent("Patient's ${character.name} still in the hospital and his health equals ${character.health} points"))
-            println(
-                purpleTextCommonOpponent(
-                    "------------------------------------------------" +
-                            ""
-                )
-            )
+            println(purpleTextCommonOpponent("--------------------------------------------------"))
         }
     }
 

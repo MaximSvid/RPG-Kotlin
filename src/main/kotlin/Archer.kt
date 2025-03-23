@@ -1,5 +1,5 @@
 class Archer(name: String, health: Double) : Character(name, health) {
-    var arrowCount: Int = 3
+    var arrowCount: Int = 9
 
     // Normaler Angriff, verursacht 10 Schaden (modifiziert durch attackFactor)
     private fun archerAttack(opponent: Opponent) {
@@ -66,7 +66,7 @@ class Archer(name: String, health: Double) : Character(name, health) {
         val choiceAttack = readln()
         when (choiceAttack) {
             "1" -> archerAttack(opponent)
-            //when die anzahl von arrows ist 0 oder weniger Benutzer kann nicht Angreifen machen
+            //when die anzahl von arrows ist 2 oder weniger Benutzer kann nicht Angreifen machen
             "2" -> {
                 if (arrowCount < 3) {
                     println(greenTextArcher("No arrows left! Refill your quiver using the bag."))

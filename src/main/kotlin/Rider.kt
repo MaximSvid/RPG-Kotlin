@@ -1,6 +1,6 @@
 class Rider(name: String, health: Double) : Character(name, health) {
 
-    private var countSuperStrongAttack: Int = 3 // Anzahl der verfügbaren superstarken Angriffe
+    var countSuperStrongAttack: Int = 3 // Anzahl der verfügbaren superstarken Angriffe
 
     // Normaler Angriff mit dem Reiter, verursacht 30 Schaden
     private fun riderAttack(opponent: Opponent) {
@@ -43,7 +43,7 @@ class Rider(name: String, health: Double) : Character(name, health) {
                 """ RIDER ATTACKED...
                 Rider health status: $health HP
                 Select the type of attack...
-                [1] - Normal Attack 
+                [1] - Rider Attack 
                 ${
                     if (countSuperStrongAttack <= 0) {
                         "[2] - Thunderous Charge (No charges left!)"
@@ -93,6 +93,7 @@ class Rider(name: String, health: Double) : Character(name, health) {
                             """
                      [1] - Use a bag of medical supplies (The amount of medicine available (${bag.amountOfMedicine})
                      [2] - Use the bag to increase your strength (The amount of power ${bag.amountOfPower})
+                     [3] - Restock rider's thunderous charge
                 """.trimIndent()
                         )
                     )
@@ -100,6 +101,7 @@ class Rider(name: String, health: Double) : Character(name, health) {
                     when (choiceBag) {
                         "1" -> bag.useMedicine(this)
                         "2" -> bag.usePower(this)
+                        "3" -> bag.restockRiderThunderousCharge(this)
                         else -> {
                             println(
                                 pintTextBag("Enter a number between 1 and 5")
